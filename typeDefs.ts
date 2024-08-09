@@ -1,17 +1,20 @@
 import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
+  type Category {
+    id: ID
+    title: String
+    avatar: String
+  }
+  
   type Article {
     id: ID
     title: String
     avatar: String
     description: String
-  }
-
-  type Category {
-    id: ID
-    title: String
-    avatar: String
+    category: Category 
+    # category is not a field in database schema
+    # so in resolvers => write a function to get data and return to this category
   }
 
   input ArticleInput {
